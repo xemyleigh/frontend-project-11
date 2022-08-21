@@ -20,6 +20,7 @@
   "devDependencies": {
     "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jest": "^26.8.5",
     "html-webpack-plugin": "^5.5.0",

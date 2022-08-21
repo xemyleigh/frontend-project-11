@@ -1,5 +1,5 @@
 const f = () => {
-    console.log(12324)
-}
+  console.log(12324);
+};
 
-export default f
+export default f;
