@@ -1,0 +1,13 @@
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+$secondary: #212529;
+
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
