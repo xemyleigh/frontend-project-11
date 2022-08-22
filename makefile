@@ -6,6 +6,7 @@ install:
 
 build:
 	rm -rf dist
+	sass ./src/styles/scss/custom.scss ./dist/style.css
 	NODE_ENV=production npx webpack
 
 test:
