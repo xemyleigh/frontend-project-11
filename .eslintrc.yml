@@ -10,12 +10,15 @@ env:
   jest: true
   browser: true
 
-parser: "@babel/eslint-parser"
 
 extends:
   - "airbnb-base"
   - "plugin:jest/recommended"
 
+parserOptions:
+  ecmaVersion: 2020
+
 rules:
   no-console: 0
   import/extensions: 0
+  no-underscore-dangle: [0, { "allow": ["__filename", "__dirname"] }]
