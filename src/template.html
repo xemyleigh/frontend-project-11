@@ -5,35 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSS-frontend-project</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 <body class="">
     <div class="bg-secondary">
-        <div class="container p-5 ">
+        <div class="container p-5">
             <div class="row">
                 <div class="content col mx-auto">
                     <div class="row">
                         <div class="col text-white">
-                            <h1>RSS агрегатор</h1>
-                            <p>Начните читать RSS сегодня! Это легко, это красиво.</p>        
+                            <h1 class="display-3">RSS агрегатор</h1>
+                            <p class="lead">Начните читать RSS сегодня! Это легко, это красиво.</p>        
                         </div>
                     </div>
                     <div class="row">
-                        <form action="">
-                            <label for="form-link" class="sr-only">RSS-ссылка</label>
-                            <input class="col-8" type="text" name="link" id="form-link">
-                            <input type="submit" value="Добавить" class="btn btn-primary col-2 .offset-md-2">
-                        </form>    
-                    </div>
-                    <div class="row">
-                        
+                        <label for="form-link" class="sr-only">RSS-ссылка</label>
+                        <input class="col form-control" type="text" name="url" id="form-link" placeholder="Ссылка RSS" required autofocus>
+                        <input type="submit" value="Добавить" class="btn btn-primary col-auto px-sm-5">
+                        <p class="text-muted mt-2 mb-0">Пример: https://ru.hexlet.io/lessons.rss</p>
+                        <p class="feedback text-danger small m-0"></p>
                     </div>
 
-                    <p class="text-muted">Пример: https://ru.hexlet.io/lessons.rss</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="accordion" id="accordionExample">
+    <!-- <div class="accordion" id="accordionExample">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -48,7 +45,7 @@
       </div>
       
     </div>
-
+ -->
 
 </body>
 </html>

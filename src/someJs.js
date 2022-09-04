@@ -1,5 +1,7 @@
-const f = () => {
-  console.log(12324);
-};
+// const f = () => {
+//   const form = document.querySelector('form')
 
-export default f;
+//   console.log(form);
+// };
+
+// export default f;
