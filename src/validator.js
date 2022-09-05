@@ -1,34 +1,43 @@
 import {object, string} from 'yup';
-import watchedState from './watchedState.js';
+import render from './watchedState.js';
 import { setLocale } from 'yup';
 import i18next from 'i18next';
 import ru from './texts.js';
+import onChange from 'on-change';
 
 
 
 
 export default () => {
-    console.log({
-        resuorces: ru
-    })
+
     const i18nInstance = i18next.createInstance();
-    i18nInstance.init({lng: 'ru', debug: true, resources: {ru}})
+    i18nInstance.init({lng: 'ru', debug: true, resources: { ru }})
 
-    let errors = []
-    const addedUrls = []
-    let startIndex = -1
+    const state = {
+        form: {
+            url: '',
+            urlValid: '',
+        },
+        formInfo: {
+            addedUrls: [],
+            status: ''    
+        }
+    }
 
-    const state = watchedState
+
+    const watchedStateForm = onChange(state.form, () => {
+        render(errorBox, state)
+    })
+    
+    const errorBox = document.querySelector('.feedback')
     const submit = document.querySelector('[type="submit"]')
     const input = document.querySelector('input')
-    input.focus()
+    const form = document.querySelector('form')
 
     submit.addEventListener('click', (e) => {
         e.preventDefault()
         const url = input.value
         state.url = url
-        state.status = 'send'
-        console.log(addedUrls)
 
         setLocale({
             mixed: {
@@ -38,39 +47,28 @@ export default () => {
                 matches: i18nInstance.t('errors.notValid'),
             }
         })
-
+    
         const schema = object({
             url: string()
-                .notOneOf(addedUrls)
+                .notOneOf(state.formInfo.addedUrls)
                 .matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/)
         })
     
-        const promise = schema.validate({url})
-            .catch(e => {
-                errors.push(e.name)
-                console.log(errors)
-                console.log(e.errors)
-            })
+
+        schema.validate({url})
             .then(data => {
-                console.log(23423423423424)
-                if (errors.includes('ValidationError')) {
-                    state.valid = false
-                    errors = []
-                } else {
-                    state.valid = true
-                }
-        
-                if (addedUrls.includes(url)) {
-                    state.addedStatus = true
-                } else {
-                    state.addedStatus = false
-                }
-                addedUrls.push(url)
-                console.log(addedUrls)
-                console.log(state)
-        
-                input.value = ''
-                input.focus()
+                state.formInfo.addedUrls.push(url)
+                state.formInfo.status = i18nInstance.t('successfullyAdded')
+                watchedStateForm.urlValid = true
             })
+            .catch(e => {
+                state.formInfo.status = e.errors
+                watchedStateForm.urlValid = false
+            })
+
+        state.form.urlValid = ''
+
+        input.focus()
+        form.reset()
     })
 }
