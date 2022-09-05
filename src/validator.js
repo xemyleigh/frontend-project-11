@@ -1,12 +1,8 @@
 import {object, string} from 'yup';
-import render from './watchedState.js';
+import watchState from './view.js';
 import { setLocale } from 'yup';
 import i18next from 'i18next';
 import ru from './texts.js';
-import onChange from 'on-change';
-
-
-
 
 export default () => {
 
@@ -24,15 +20,12 @@ export default () => {
         }
     }
 
-
-    const watchedStateForm = onChange(state.form, () => {
-        render(errorBox, state)
-    })
-    
     const errorBox = document.querySelector('.feedback')
     const submit = document.querySelector('[type="submit"]')
     const input = document.querySelector('input')
     const form = document.querySelector('form')
+    
+    const watchedStateForm = watchState(state, errorBox)    
 
     submit.addEventListener('click', (e) => {
         e.preventDefault()
@@ -54,7 +47,6 @@ export default () => {
                 .matches(/((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/)
         })
     
-
         schema.validate({url})
             .then(data => {
                 state.formInfo.addedUrls.push(url)

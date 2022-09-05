@@ -1,6 +1,6 @@
+import onChange from "on-change"
 
 const render = (container, state) => {
-    console.log(state)
     const input = document.querySelector('input')
 
     container.textContent = state.formInfo.status
@@ -17,4 +17,8 @@ const render = (container, state) => {
     }    
 }
 
-export default render
+const watchState = (state, container) => {
+    return onChange(state.form, () => render(container, state))
+}
+
+export default watchState
