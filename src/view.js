@@ -69,6 +69,8 @@ const renderPosts = (posts, postsContainer) => {
         a.textContent = post.title
         const button = document.createElement('button')
         button.setAttribute('type', 'button')
+        button.setAttribute('data-bs-toggle', 'modal')
+        button.setAttribute('data-bs-target', '#modal')
         button.classList.add('btn', 'btn-outline-primary', 'btn-sm')
         button.textContent = 'Просмотр'
         li.append(a, button)
@@ -101,7 +103,7 @@ export const watchFeeds = (feeds, feedsContainer) => {
 export const watchPosts = (posts, postsContainer) => {
     return onChange(posts, () => {
         console.log('RENDER STARTing')
-
+        console.log(posts)
         renderPosts(posts, postsContainer)
     })
 }

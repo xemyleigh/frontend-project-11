@@ -47,19 +47,22 @@ export default () => {
         state.feedsAndPosts.posts.length = 0
         const promise = Promise.all(promises)
             .then(data => {
-                data.forEach(response => {
-                    const { feed, newPosts } = rssParser(response.data.contents)
-                    watchedStateFeeds.push(feed)
-                    watchedStatePosts.push(...newPosts)    
-                })
+                if (data !== undefined) {
+                    data.forEach(response => {
+                        const { feed, newPosts } = rssParser(response.data.contents)
+                        watchedStateFeeds.push(feed)
+                        watchedStatePosts.push(...newPosts)    
+                    })
+                }
+                
             })
-            // .catch(e => {
-            //     // if (e.message === 'Network Error') {
-            //     //     state.formInfo.status = 'Ошибка сети'
-            //     //     watchedStateForm.urlValid = false
-            //     // }
-            //     console.log(e.message)
-            // })
+            .catch(e => {
+                // if (e.message === 'Network Error') {
+                //     state.formInfo.status = 'Ошибка сети'
+                //     watchedStateForm.urlValid = false
+                // }
+                console.log(e.message)
+            })
         setTimeout(run, 5000)
     }, 5000)
 

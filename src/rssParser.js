@@ -7,19 +7,19 @@ const rssParser = (rssString) => {
     const channel = document.querySelector('channel')
     const itemsList = channel.querySelectorAll('item')
     console.log(channel)
-    const id = _.uniqueId()
     const feed = {
         title: channel.querySelector('title').textContent,
         description: channel.querySelector('description').textContent,
-        id
     }
     const items = Array.from(itemsList)
     const newPosts = []
+    let id = 1
     items.forEach(item => {
         const title = item.querySelector('title').textContent
         const link = item.querySelector('link').textContent
         const description = item.querySelector('description').textContent
         const post = {title, link, description, id}
+        id += 1
         newPosts.push(post)
     })
 
