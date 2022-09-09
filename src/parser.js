@@ -1,10 +1,5 @@
-import axios from "axios";
+import axios from 'axios';
 
-const parser = (url) => {
-  return axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`)
-    .catch(console.log)
-}
+const parser = (url) => axios.get(`https://allorigins.hexlet.app/get?disableCache=true&url=${encodeURIComponent(url)}`);
 
-
-export default parser
-
+export default parser;
