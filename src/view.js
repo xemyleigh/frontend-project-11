@@ -104,6 +104,9 @@ const renderPosts = (feedsAndPosts, postsContainer) => {
       modalTitle.textContent = post.title;
       modalBody.textContent = post.description;
       modalLink.setAttribute('href', post.link);
+
+      a.classList.remove('fw-bold');
+      a.classList.add('fw-normal', 'link-secondary');
     });
   });
 
