@@ -1,7 +1,5 @@
 const updateRss = (state, watchedStateFeeds, watchedStatePosts, parser, rssParser) => {
-  console.log(state.formInfo.addedUrls.length);
   setTimeout(function run() {
-    console.log('UPDATE!!!!!!!!!!!!');
     const promises = state.formInfo.addedUrls.map((url) => parser(url));
     state.feedsAndPosts.feeds.length = 0;
     state.feedsAndPosts.posts.length = 0;
@@ -17,9 +15,6 @@ const updateRss = (state, watchedStateFeeds, watchedStatePosts, parser, rssParse
           });
         }
       });
-    //   .catch((e) => {
-    //     console.log(e.message);
-    //   });
     setTimeout(run, 5000);
   }, 5000);
 };

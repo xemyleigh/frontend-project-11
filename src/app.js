@@ -66,7 +66,6 @@ export default () => {
       })
       .catch((error) => {
         state.form.urlValid = '';
-        console.log(error.message);
         switch (error.message) {
           case 'Network Error':
             state.formInfo.status = 'Ошибка сети';

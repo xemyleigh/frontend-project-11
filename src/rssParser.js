@@ -1,12 +1,9 @@
 const rssParser = (rssString, id) => {
   const parser = new DOMParser();
   const html = parser.parseFromString(rssString, 'text/html');
-  console.log(html);
   const document = html.documentElement;
-  console.log(document);
   const channel = document.querySelector('channel');
   const itemsList = channel.querySelectorAll('item');
-  console.log(channel);
   const feed = {
     title: channel.querySelector('title').textContent,
     description: channel.querySelector('description').textContent,

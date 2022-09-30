@@ -93,14 +93,11 @@ const renderPosts = (feedsAndPosts, postsContainer) => {
     button.textContent = 'Просмотр';
     li.append(a, button);
     ulPosts.append(li);
-    console.log(a.id);
 
     a.addEventListener('click', () => {
       a.classList.remove('fw-bold');
       a.classList.add('fw-normal', 'link-secondary');
-
       feedsAndPosts.ui.openedLinks.push(a.id);
-      console.log(feedsAndPosts.ui.openedLinks);
     });
 
     button.addEventListener('click', () => {
@@ -126,6 +123,5 @@ export const watchFeeds = (feeds, feedsContainer) => onChange(feeds, () => {
 });
 
 export const watchPosts = (feedsAndPosts, postsContainer) => onChange(feedsAndPosts.posts, () => {
-  console.log(feedsAndPosts);
   renderPosts(feedsAndPosts, postsContainer);
 });
