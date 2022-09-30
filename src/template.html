@@ -34,9 +34,17 @@
                             <h1 class="display-3">RSS агрегатор</h1>
                             <p class="lead">Начните читать RSS сегодня! Это легко, это красиво.</p>
                             <form>
-                              <label for="form-link" class="sr-only">RSS-ссылка</label>
-                              <input class="col form-control" aria-label="url" type="text" name="url" id="form-link" placeholder="Ссылка RSS" required autofocus>
-                              <button type="submit" aria-label="add" class="btn btn-primary col-auto px-sm-5">Добавить</button>
+                              <div class="row">
+                                <div class="col">
+                                  <div>
+                                    <label for="form-link" class="sr-only">RSS-ссылка</label>
+                                    <input class="col form-control" aria-label="url" type="text" name="url" id="form-link" placeholder="Ссылка RSS" required autofocus>      
+                                  </div>
+                                </div>
+                                <div class="col-auto">
+                                  <button type="submit" aria-label="add" class="h-100 btn btn-primary col-auto px-sm-5">Добавить</button>
+                                </div>
+                              </div>
                             </form>
                             <p class="text-muted mt-2 mb-0">Пример: https://ru.hexlet.io/lessons.rss</p>
                             <p class="feedback text-danger small m-0"></p>      
