@@ -54,15 +54,18 @@ const renderFeeds = (feeds, feedsContainer) => {
 const renderPosts = (feedsAndPosts, postsContainer) => {
   postsContainer.innerHTML = '';
 
+  const card = document.createElement('div');
+  card.classList.add('card', 'border-0');
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body');
+  card.append(cardBody);
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Посты';
+  h2.classList.add('h2', 'card-title');
+  cardBody.append(h2);
+
   const ulPosts = document.createElement('ul');
   ulPosts.classList.add('list-group', 'border-0', 'rounded-0');
-
-  //   const cardBody = document.createElement('div.card-body');
-  //   card.append(cardBody)
-  //   const h2 = document.createElement('h2');
-  //   h2.textContent = 'Фиды';
-  //   h2.classList.add('h2', 'card-title');
-  //   cardBody.append(h2)
 
   const modalTitle = document.querySelector('.modal-title');
   const modalBody = document.querySelector('.modal-body');
@@ -109,8 +112,9 @@ const renderPosts = (feedsAndPosts, postsContainer) => {
       a.classList.add('fw-normal', 'link-secondary');
     });
   });
-
-  postsContainer.append(ulPosts);
+  
+  card.append(ulPosts)
+  postsContainer.append(card);
 };
 
 export const watchForm = (state, container) => onChange(state.form, () => {
